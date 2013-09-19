@@ -9,10 +9,10 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             adjustLeftHeight();
         });
-        
+
         $(window).resize(function () {
             adjustLeftHeight();
         });
@@ -34,17 +34,13 @@
         }
 
 
-        $(window).scroll(function() {
-            $("#headerText").empty();
-
+        $(window).scroll(function () {
 
             var scrollPostision = $(window).scrollTop();
-            //$("#headerText").append(scrollPostision + " - ");
-
+            
             $(".header").each(function (idex, elem) {
-              //  $("#headerText").append($(elem).offset().top + ", ");
                 if (scrollPostision > $(elem).offset().top) {
-                        $(".header.fixed").removeClass("fixed");
+                    $(".header.fixed").removeClass("fixed");
                     $(elem).addClass("fixed");
                 }
             });
@@ -54,12 +50,22 @@
     </script>
 </head>
 <body>
-    <div class="header " >
+
+    
+    <div class="header fixed">
         <h1>Title Bar 1</h1>
         <span id="headerText"></span>
 
     </div>
+    
+    
+    <div class="notHeader">
+    </div>
     <div class="content">
+        
+        <div></div>
+        
+
         <div class="left">
             left
         </div>
