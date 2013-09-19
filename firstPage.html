@@ -9,69 +9,117 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             adjustLeftHeight();
         });
-
+        
         $(window).resize(function () {
             adjustLeftHeight();
         });
 
         function adjustLeftHeight() {
-            var left = $("#left"),
-                right = $("#right");
 
-            if (left.height() > right.height())
-                right.height(left.height());
-            else
-                left.height(right.height());
+            var allLeft = $(".left");
+            var allRight = $(".right");
+
+            allLeft.each(function (index, elem) {
+                var $left = $(elem);
+                var $right = $(allRight.get(index));
+
+                if ($left.height() > $right.height())
+                    $right.height($left.height());
+                else
+                    $left.height($right.height());
+            });
         }
 
 
-    </script>
+        $(window).scroll(function() {
+            $("#headerText").empty();
 
+
+            var scrollPostision = $(window).scrollTop();
+            //$("#headerText").append(scrollPostision + " - ");
+
+            $(".header").each(function (idex, elem) {
+              //  $("#headerText").append($(elem).offset().top + ", ");
+                if (scrollPostision > $(elem).offset().top) {
+                        $(".header.fixed").removeClass("fixed");
+                    $(elem).addClass("fixed");
+                }
+            });
+        });
+
+
+    </script>
 </head>
 <body>
-    <div id="header">
-        <h1>Title Bar</h1>
+    <div class="header " >
+        <h1>Title Bar 1</h1>
+        <span id="headerText"></span>
+
     </div>
-    <div id="content">
-        <div id="left">
+    <div class="content">
+        <div class="left">
+            left
+        </div>
+        <div class="right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum neque id eros auctor tristique. Fusce quam lorem, vestibulum ut magna et, cursus molestie libero. Suspendisse sed mauris vitae diam mattis pellentesque. Nulla neque tortor, varius quis augue vel, commodo tincidunt elit. Maecenas vel odio nec velit faucibus fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum arcu libero, auctor vitae urna eget, blandit fringilla justo. Fusce eu enim id nisi condimentum dictum sit amet non lectus.</p>
+            <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
+            <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
+            <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
+            <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
+            <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
+            <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
+        </div>
+    </div>
+    <div class="header" id="headerTwo">
+        <h1>Title Bar 2</h1>
+    </div>
+    <div class="content">
+        <div class="left">
             left
         </div>
 
-        <div id="right">
+        <div class="right">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum neque id eros auctor tristique. Fusce quam lorem, vestibulum ut magna et, cursus molestie libero. Suspendisse sed mauris vitae diam mattis pellentesque. Nulla neque tortor, varius quis augue vel, commodo tincidunt elit. Maecenas vel odio nec velit faucibus fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum arcu libero, auctor vitae urna eget, blandit fringilla justo. Fusce eu enim id nisi condimentum dictum sit amet non lectus.</p>
-
             <p>Aenean at nulla odio. Vestibulum eleifend massa vitae velit tempor, non auctor velit imperdiet. Nunc ac odio eu justo pretium luctus. Nulla vestibulum urna sed est fermentum aliquam. Etiam eget erat eu tortor dictum rhoncus a nec justo. Sed eu dui ut leo lobortis laoreet quis sed sem. Nulla consectetur augue tristique dignissim viverra. Proin tincidunt tincidunt libero a iaculis. Etiam leo elit, cursus at velit sed, faucibus pretium leo. Ut viverra mattis sodales. Morbi hendrerit quam eu est dignissim congue. Pellentesque quis metus commodo sapien interdum rutrum pellentesque at risus. Sed tempor, orci nec tincidunt dictum, turpis purus mattis enim, ut sodales odio arcu quis sem. Praesent vitae justo lorem. Nam ultrices enim at consectetur vehicula. Ut luctus interdum urna, rutrum luctus orci varius vel.</p>
-
             <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
-
+            <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
             <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
-
             <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
-
             <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
-
             <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
-
             <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
-
             <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
-
             <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
-
-            <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
-
-            <p>Integer pharetra nisi vitae massa condimentum, ac hendrerit magna commodo. Pellentesque sit amet neque ac mauris hendrerit scelerisque quis nec sapien. Nullam tempor odio sed tristique interdum. Donec non aliquet quam. Nunc ac adipiscing tortor. Mauris nec nisl accumsan, ullamcorper metus eu, dictum mi. Mauris id adipiscing lectus. Morbi dignissim scelerisque purus ut ullamcorper. Nunc placerat ipsum tortor, quis pretium est sagittis nec. In lacus eros, volutpat eu convallis a, ullamcorper vel leo. Quisque vel orci ultricies, molestie nisi non, congue leo. Nulla orci metus, vehicula at laoreet ut, congue nec sem. Proin tempor justo ut odio vestibulum suscipit in a eros. Sed fermentum et sapien id aliquam. Donec at erat bibendum, fringilla odio sit amet, sagittis nibh.</p>
-
-            <p>Morbi accumsan ullamcorper leo vel viverra. In ac imperdiet libero, id cursus eros. Morbi sed auctor quam, ac ullamcorper metus. Morbi et vestibulum justo, et volutpat libero. Duis pretium magna sapien, at porta justo sodales vel. Sed consequat magna odio, eu mattis risus malesuada vel. Aliquam tristique accumsan fermentum. Morbi interdum nunc vitae viverra pulvinar.</p>
-
             <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
         </div>
     </div>
+    <div class="header">
+        <h1>Title Bar 3</h1>
+    </div>
+    <div class="content">
+        <div class="left">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum neque id eros auctor tristique. Fusce quam lorem, vestibulum ut magna et, cursus molestie libero. Suspendisse sed mauris vitae diam mattis pellentesque. Nulla neque tortor, varius quis augue vel, commodo tincidunt elit. Maecenas vel odio nec velit faucibus fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum arcu libero, auctor vitae urna eget, blandit fringilla justo. Fusce eu enim id nisi condimentum dictum sit amet non lectus.</p>
+        </div>
 
+        <div class="right">
+            <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
+        </div>
+    </div>
+    <div class="header">
+        <h1>Title Bar 4</h1>
+    </div>
+    <div class="content">
+        <div class="left">
+            left
+        </div>
 
+        <div class="right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum neque id eros auctor tristique. Fusce quam lorem, vestibulum ut magna et, cursus molestie libero. Suspendisse sed mauris vitae diam mattis pellentesque. Nulla neque tortor, varius quis augue vel, commodo tincidunt elit. Maecenas vel odio nec velit faucibus fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum arcu libero, auctor vitae urna eget, blandit fringilla justo. Fusce eu enim id nisi condimentum dictum sit amet non lectus.</p>
+        </div>
+    </div>
     <div id="footer">
         <h5>Footer </h5>
     </div>
