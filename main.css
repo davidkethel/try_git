@@ -12,6 +12,7 @@ body h1 {
 }
 #content {
   width: 700px;
+  margin: 0 auto;
 }
 #left {
   background-color: black;
@@ -23,7 +24,8 @@ body h1 {
 #right {
   background-color: lightgreen;
   color: brown;
-  overflow: hidden;
+  width: 600px;
+  float: right;
 }
 #footer {
   background-color: yellow;
