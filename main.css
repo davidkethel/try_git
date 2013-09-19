@@ -1,0 +1,35 @@
+﻿body {
+  background-color: red;
+  margin: 0px;
+}
+body h1 {
+  margin: 0px;
+}
+#header {
+  background-color: blue;
+  color: white;
+  height: 80px;
+}
+#content {
+  width: 700px;
+  margin: 0 auto;
+}
+#left {
+  background-color: black;
+  color: pink;
+  float: left;
+  width: 100px;
+  height: 100%;
+}
+#right {
+  background-color: lightgreen;
+  color: brown;
+  width: 600px;
+  float: right;
+}
+#footer {
+  background-color: yellow;
+  color: blue;
+  clear: both;
+  height: 40px;
+}
