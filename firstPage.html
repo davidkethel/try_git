@@ -5,12 +5,26 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="Scripts/jquery-1.9.1.min.js"></script>
-
+    <script type="text/javascript" src="Scripts/underscore.min.js"></script>
 
     <script type="text/javascript">
 
+        var headersInitalOffset = [];
+        var fixedHeader = null;
+
+
+
+
         $(document).ready(function () {
             adjustLeftHeight();
+
+            $(".header").each(function (index, elem) {
+                headersInitalOffset.push($(elem).offset().top);
+            });
+
+            adjustHeader();
+
+
         });
 
         $(window).resize(function () {
@@ -32,40 +46,55 @@
                     $left.height($right.height());
             });
         }
-
-
+        
         $(window).scroll(function () {
+            adjustHeader();
+
+        });
+        
+
+
+        function adjustHeader() {
+            $("#infoText").empty();
 
             var scrollPostision = $(window).scrollTop();
-            
-            $(".header").each(function (idex, elem) {
-                if (scrollPostision > $(elem).offset().top) {
-                    $(".header.fixed").removeClass("fixed");
-                    $(elem).addClass("fixed");
-                }
-            });
-        });
+            $("#infoText").append(scrollPostision + " - ");
 
+            var headerToBeFixed = _.filter(headersInitalOffset, function (num) {
+                return num <= scrollPostision;
+            }).length -1;
+            
+
+            if (fixedHeader == null || fixedHeader != headerToBeFixed) {
+
+                var $oldHeader = $(".header.fixed");
+                $oldHeader.removeClass("fixed");
+                
+
+                $($(".header").get(headerToBeFixed)).addClass("fixed");
+                fixedHeader = headerToBeFixed;
+            }
+        }
 
     </script>
 </head>
 <body>
 
-    
-    <div class="header fixed">
+
+
+    <div id="info">
+        <span id="infoText">Dave</span>
+    </div>
+
+
+
+    <div class="header ">
         <h1>Title Bar 1</h1>
-        <span id="headerText"></span>
 
     </div>
-    
-    
     <div class="notHeader">
     </div>
     <div class="content">
-        
-        <div></div>
-        
-
         <div class="left">
             left 
         </div>
@@ -79,7 +108,7 @@
             <p>Donec neque magna, sodales dapibus imperdiet non, suscipit eget ipsum. Etiam nec dolor ut nisi pharetra dictum non eget augue. Etiam tincidunt mi id est euismod, ut venenatis neque tempus. Praesent lacinia risus metus, at condimentum diam vestibulum et. Integer ac mi nec enim facilisis pharetra. Nunc sed nibh libero. Duis imperdiet sapien id euismod viverra. Integer aliquam metus a nulla tincidunt eleifend. Donec a porttitor tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam convallis aliquam dolor. Morbi eu velit quam. Nullam sed neque id risus aliquam lobortis. Sed vel pulvinar velit, id varius mauris. Sed justo nunc, laoreet eu velit et, pulvinar eleifend lacus. Phasellus tristique orci vitae dignissim imperdiet.</p>
         </div>
     </div>
-    <div class="header" id="headerTwo">
+    <div class="header">
         <h1>Title Bar 2</h1>
     </div>
     <div class="content">

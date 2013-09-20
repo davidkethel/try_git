@@ -23,6 +23,11 @@ body h1 {
   clear: both;
   width: 100%;
 }
+#info {
+  position: fixed;
+  top: 340px;
+  left: 120px;
+}
 .content {
   width: 700px;
   margin: 0 auto;
