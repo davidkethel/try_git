@@ -5,23 +5,36 @@
 body h1 {
   margin: 0px;
 }
-#header {
+.fixed {
+  position: fixed;
+  top: 0;
+}
+.header {
   background-color: blue;
   color: white;
   height: 80px;
+  clear: both;
+  width: 100%;
 }
-#content {
+.notHeader {
+  background-color: pink;
+  color: white;
+  height: 80px;
+  clear: both;
+  width: 100%;
+}
+.content {
   width: 700px;
   margin: 0 auto;
 }
-#left {
+.left {
   background-color: black;
   color: pink;
   float: left;
   width: 100px;
   height: 100%;
 }
-#right {
+.right {
   background-color: lightgreen;
   color: brown;
   width: 600px;
